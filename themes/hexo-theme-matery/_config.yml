@@ -109,8 +109,8 @@ recommend:
 
 # Configure website favicon and LOGO
 # 配置网站favicon和网站LOGO
-favicon: /favicon.png
-logo: /medias/logo.png
+favicon: /myblog/favicon.png
+logo: /myblog/medias/logo.png
 
 # The configuration of the second button in the home banner,
 # including the display name of the button, the font awesome icon, and the hyperlink to the button.
@@ -155,8 +155,8 @@ code:
 reward:
   enable: false
   title: 你的赏识是我前进的动力
-  wechat: /medias/reward/wechat.png
-  alipay: /medias/reward/alipay.jpg
+  wechat: /myblog/medias/reward/wechat.png
+  alipay: /myblog/medias/reward/alipay.jpg
 
 # Whether to activate the copyright information of the blog and author when copying the post content.
 # minCharNumber: Approve copyright information by copying at least how many characters.
@@ -196,7 +196,7 @@ clicklove:
 # profile in about page, including avatars, career, and personal introductions.
 # 在”关于”页面中配置个人信息，包括头像、职业和个人介绍.
 profile:
-  avatar: /medias/avatar.jpg
+  avatar: /myblog/medias/avatar.jpg
   career: Software Engineer
   introduction: If you wish to succeed, you should use persistence as your good friend, experience as your reference, prudence as your brother and hope as your sentry.
 
@@ -253,9 +253,9 @@ mySkills:
 myGallery:
   enable: true
   data:
-    - /medias/featureimages/0.jpg
-    - /medias/featureimages/1.jpg
-    - /medias/featureimages/2.jpg
+    - /myblog/medias/featureimages/0.jpg
+    - /myblog/medias/featureimages/1.jpg
+    - /myblog/medias/featureimages/2.jpg
 
 # Whether to display post-calender in the `archive` page
 # 设置在归档页面中是否显示'文章日历'控件
@@ -307,7 +307,7 @@ valine:
   avatar: 'mm' # Gravatar style : mm/identicon/monsterid/wavatar/retro/hide
   pageSize: 10
   placeholder: 'just go go' # Comment Box placeholder
-  background: /medias/comment_bg.png
+  background: /myblog/medias/comment_bg.png
 
 # Whether to display fork me on github icon and link, default true, You can change it to your repo address
 # 配置是否在 header 中显示 fork me on github 的图标，默认为true，你可以修改为你的仓库地址.
@@ -390,30 +390,30 @@ libs:
 # The post featured images that needs to be displayed when there is no image.
 # 无文章特色图片时需要显示的文章特色图片.
 featureImages:
-- /medias/featureimages/0.jpg
-- /medias/featureimages/1.jpg
-- /medias/featureimages/2.jpg
-- /medias/featureimages/3.jpg
-- /medias/featureimages/4.jpg
-- /medias/featureimages/5.jpg
-- /medias/featureimages/6.jpg
-- /medias/featureimages/7.jpg
-- /medias/featureimages/8.jpg
-- /medias/featureimages/9.jpg
-- /medias/featureimages/10.jpg
-- /medias/featureimages/11.jpg
-- /medias/featureimages/12.jpg
-- /medias/featureimages/13.jpg
-- /medias/featureimages/14.jpg
-- /medias/featureimages/15.jpg
-- /medias/featureimages/16.jpg
-- /medias/featureimages/17.jpg
-- /medias/featureimages/18.jpg
-- /medias/featureimages/19.jpg
-- /medias/featureimages/20.jpg
-- /medias/featureimages/21.jpg
-- /medias/featureimages/22.jpg
-- /medias/featureimages/23.jpg
+- /myblog/medias/featureimages/0.jpg
+- /myblog/medias/featureimages/1.jpg
+- /myblog/medias/featureimages/2.jpg
+- /myblog/medias/featureimages/3.jpg
+- /myblog/medias/featureimages/4.jpg
+- /myblog/medias/featureimages/5.jpg
+- /myblog/medias/featureimages/6.jpg
+- /myblog/medias/featureimages/7.jpg
+- /myblog/medias/featureimages/8.jpg
+- /myblog/medias/featureimages/9.jpg
+- /myblog/medias/featureimages/10.jpg
+- /myblog/medias/featureimages/11.jpg
+- /myblog/medias/featureimages/12.jpg
+- /myblog/medias/featureimages/13.jpg
+- /myblog/medias/featureimages/14.jpg
+- /myblog/medias/featureimages/15.jpg
+- /myblog/medias/featureimages/16.jpg
+- /myblog/medias/featureimages/17.jpg
+- /myblog/medias/featureimages/18.jpg
+- /myblog/medias/featureimages/19.jpg
+- /myblog/medias/featureimages/20.jpg
+- /myblog/medias/featureimages/21.jpg
+- /myblog/medias/featureimages/22.jpg
+- /myblog/medias/featureimages/23.jpg
 
 # default configs that the default policy for every articles/posts
 # default 配置文章的默认转载规则
