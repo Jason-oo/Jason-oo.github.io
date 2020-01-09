@@ -14,7 +14,7 @@
     <meta name="keywords" content="web,node,iot">
 
 
-<title>Hello World | Jason&#39;s blog</title>
+<title>Linux常用指令 | Jason&#39;s blog</title>
 
 
 
@@ -176,7 +176,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Hello World</h1>
+            <h1 class="post-title">Linux常用指令</h1>
             
                 <div class="post-meta">
                     
@@ -185,7 +185,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">January 7, 2020&nbsp;&nbsp;14:47:36</a>
+                        Date: <a href="#">January 9, 2020&nbsp;&nbsp;10:40:55</a>
                         </span>
                     
                     
@@ -194,15 +194,36 @@
         </header>
 
         <div class="post-content">
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+            <p>在工作中偶尔会用到linux指令, 下面记录一些常见命令方便回顾与查阅</p>
+<h2 id="进程相关"><a href="#进程相关" class="headerlink" title="进程相关"></a>进程相关</h2><h3 id="查找进程"><a href="#查找进程" class="headerlink" title="查找进程"></a>查找进程</h3><p><code>ps aux | grep xxx</code></p>
+<p>该命令通过管道符查找目标进程, 注意grep本身也是一个进程, 将会被列出, 可添加<code>|grep -v grep</code>去除.</p>
+<p>ps命令查找与进程相关的pid号, 各常用选项:</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>a</td>
+<td>显示包括其他用户的所有程序</td>
+</tr>
+<tr>
+<td>u</td>
+<td>以用户为主的格式显示</td>
+</tr>
+<tr>
+<td>x</td>
+<td>显示所有程序, 不区分终端</td>
+</tr>
+<tr>
+<td>e</td>
+<td>显示每个程序所使用的环境变量</td>
+</tr>
+</tbody></table>
+<h3 id="关闭进程"><a href="#关闭进程" class="headerlink" title="关闭进程"></a>关闭进程</h3><p><code>kill xxx</code> 常用 <code>kill -9 xxx</code></p>
+<p>9为信息编号, 表示<code>SIGKILL</code>, 无条件终止. 可用<code>kill -l</code>显示所有信号, xxx为进程的pid.</p>
 
         </div>
 
@@ -217,7 +238,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://jason-oo.github.io/2020/01/07/hello-world/">https://jason-oo.github.io/2020/01/07/hello-world/</a></span>
+                        <span><a href="https://jason-oo.github.io/2020/01/09/Linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">https://jason-oo.github.io/2020/01/09/Linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</a></span>
                     </p>
                 
                 
@@ -240,6 +261,10 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
+                    
+                        <a href="/tags/Linux/"># Linux</a>
+                    
+                        
                 </span>
             </div>
             <div>
@@ -250,8 +275,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/01/09/Linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">Linux常用指令</a>
             
+            <a class="next" rel="next" href="/2020/01/07/hello-world/">Hello World</a>
             
         </section>
 

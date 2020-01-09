@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Linux常用指令</title>
+      <link href="/2020/01/09/Linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
+      <url>/2020/01/09/Linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</url>
+      
+        <content type="html"><![CDATA[<p>在工作中偶尔会用到linux指令, 下面记录一些常见命令方便回顾与查阅</p><h2 id="进程相关"><a href="#进程相关" class="headerlink" title="进程相关"></a>进程相关</h2><h3 id="查找进程"><a href="#查找进程" class="headerlink" title="查找进程"></a>查找进程</h3><p><code>ps aux | grep xxx</code></p><p>该命令通过管道符查找目标进程, 注意grep本身也是一个进程, 将会被列出, 可添加<code>|grep -v grep</code>去除.</p><p>ps命令查找与进程相关的pid号, 各常用选项:</p><table><thead><tr><th>选项</th><th>含义</th></tr></thead><tbody><tr><td>a</td><td>显示包括其他用户的所有程序</td></tr><tr><td>u</td><td>以用户为主的格式显示</td></tr><tr><td>x</td><td>显示所有程序, 不区分终端</td></tr><tr><td>e</td><td>显示每个程序所使用的环境变量</td></tr></tbody></table><h3 id="关闭进程"><a href="#关闭进程" class="headerlink" title="关闭进程"></a>关闭进程</h3><p><code>kill xxx</code> 常用 <code>kill -9 xxx</code></p><p>9为信息编号, 表示<code>SIGKILL</code>, 无条件终止. 可用<code>kill -l</code>显示所有信号, xxx为进程的pid.</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hello World</title>
       <link href="/2020/01/07/hello-world/"/>
       <url>/2020/01/07/hello-world/</url>
