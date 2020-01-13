@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>kafka学习笔记</title>
+      <link href="/2020/01/13/kafka%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <url>/2020/01/13/kafka%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>kafka是一个分布式流处理平台, 主要应用于流处理或消息队列. kafka作为一个集群运行在多台服务器上, 通过topic对存储的流数据进行分类, 每条记录中包含一个key、value和一个timestamp. </p></blockquote><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><h4 id="topics和日志"><a href="#topics和日志" class="headerlink" title="topics和日志"></a>topics和日志</h4>]]></content>
+      
+      
+      <categories>
+          
+          <category> 后端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> middleware </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux常用指令</title>
       <link href="/2020/01/09/Linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
       <url>/2020/01/09/Linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</url>

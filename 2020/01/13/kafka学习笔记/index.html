@@ -14,7 +14,7 @@
     <meta name="keywords" content="web,node,iot">
 
 
-<title>Linux常用指令 | Jason&#39;s blog</title>
+<title>kafka学习笔记 | Jason&#39;s blog</title>
 
 
 
@@ -176,7 +176,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Linux常用指令</h1>
+            <h1 class="post-title">kafka学习笔记</h1>
             
                 <div class="post-meta">
                     
@@ -185,14 +185,14 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">January 9, 2020&nbsp;&nbsp;10:40:55</a>
+                        Date: <a href="#">January 13, 2020&nbsp;&nbsp;9:01:28</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%90%E7%BB%B4/">服务器运维</a>
+                                <a href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
                             
                         </span>
                     
@@ -201,37 +201,10 @@
         </header>
 
         <div class="post-content">
-            <p>在工作中偶尔会用到linux指令, 下面记录一些常见命令方便回顾与查阅</p>
-<h2 id="进程相关"><a href="#进程相关" class="headerlink" title="进程相关"></a>进程相关</h2><h3 id="查找进程"><a href="#查找进程" class="headerlink" title="查找进程"></a>查找进程</h3><p><code>ps aux | grep xxx</code></p>
-<p>该命令通过管道符查找目标进程, 注意grep本身也是一个进程, 将会被列出, 可添加<code>|grep -v grep</code>去除.</p>
-<p>ps命令查找与进程相关的pid号, 各常用选项:</p>
-<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>a</td>
-<td>显示包括其他用户的所有程序</td>
-</tr>
-<tr>
-<td>u</td>
-<td>以用户为主的格式显示</td>
-</tr>
-<tr>
-<td>x</td>
-<td>显示所有程序, 不区分终端</td>
-</tr>
-<tr>
-<td>e</td>
-<td>显示每个程序所使用的环境变量</td>
-</tr>
-</tbody></table>
-<h3 id="关闭进程"><a href="#关闭进程" class="headerlink" title="关闭进程"></a>关闭进程</h3><p><code>kill xxx</code> 常用 <code>kill -9 xxx</code></p>
-<p>9为信息编号, 表示<code>SIGKILL</code>, 无条件终止. 可用<code>kill -l</code>显示所有信号, xxx为进程的pid.</p>
-
+            <blockquote>
+<p>kafka是一个分布式流处理平台, 主要应用于流处理或消息队列. kafka作为一个集群运行在多台服务器上, 通过topic对存储的流数据进行分类, 每条记录中包含一个key、value和一个timestamp. </p>
+</blockquote>
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><h4 id="topics和日志"><a href="#topics和日志" class="headerlink" title="topics和日志"></a>topics和日志</h4>
         </div>
 
         
@@ -245,7 +218,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://jason-oo.github.io/2020/01/09/Linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">https://jason-oo.github.io/2020/01/09/Linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</a></span>
+                        <span><a href="https://jason-oo.github.io/2020/01/13/kafka%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">https://jason-oo.github.io/2020/01/13/kafka%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</a></span>
                     </p>
                 
                 
@@ -269,7 +242,7 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/Linux/"># Linux</a>
+                        <a href="/tags/middleware/"># middleware</a>
                     
                         
                 </span>
@@ -282,10 +255,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/01/13/kafka%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">kafka学习笔记</a>
             
-            
-            <a class="next" rel="next" href="/2020/01/07/hello-world/">Hello World</a>
+            <a class="next" rel="next" href="/2020/01/09/Linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">Linux常用指令</a>
             
         </section>
 
