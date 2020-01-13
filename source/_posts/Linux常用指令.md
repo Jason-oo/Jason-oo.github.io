@@ -2,6 +2,7 @@
 title: Linux常用指令
 date: 2020-01-09 10:40:55
 tags: Linux
+category: 服务器运维
 ---
 
 在工作中偶尔会用到linux指令, 下面记录一些常见命令方便回顾与查阅
