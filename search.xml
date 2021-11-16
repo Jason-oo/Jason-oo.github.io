@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>记录关于shadowsockts工具的应用</title>
+      <link href="/2021/11/16/shadowsockts/"/>
+      <url>/2021/11/16/shadowsockts/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>场景描述：公司部分 ip 被阿里限制访问，找 it 支撑部门沟通，回复已经与阿里方沟通但迟迟未得到解决。阿里云、egg、element 文档、高德地图脚本等均无法正常访问，已经严重影响日常开发工作，并且公司网络访问 github 一直不稳定，故考虑用手边闲置的 1c2g 服务器搭建 shadowsockets 工具，代理访问阿里系网站及 github。</p></blockquote><h4 id="记录实现步骤如下"><a href="#记录实现步骤如下" class="headerlink" title="记录实现步骤如下"></a>记录实现步骤如下</h4><ol><li>在服务器上下载 Python-pip 工具</li></ol><pre class=" language-sh"><code class="language-sh">yum install python-pip</code></pre><ol start="2"><li>利用工具下载 shadowsockts</li></ol><pre><code>pip install shadowsockts</code></pre><ol start="3"><li>编辑 shadowsockts 配置文件</li></ol><pre><code>vim /etc/shadowsockts.json</code></pre><p>password 为配置 port-password 键值对，代表对应端口的密码</p><pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>  <span class="token property">"server"</span><span class="token operator">:</span> <span class="token string">"0.0.0.0"</span><span class="token punctuation">,</span>  <span class="token property">"local_address"</span><span class="token operator">:</span> <span class="token string">"127.0.0.1"</span><span class="token punctuation">,</span>  <span class="token property">"local_port"</span><span class="token operator">:</span> <span class="token number">1080</span><span class="token punctuation">,</span>  <span class="token property">"password"</span><span class="token operator">:</span> <span class="token punctuation">{</span>    <span class="token string">"xxxx"</span><span class="token punctuation">,</span> <span class="token string">"xxxxx"</span>  <span class="token punctuation">}</span><span class="token punctuation">,</span>  <span class="token property">"timeout"</span><span class="token operator">:</span> <span class="token number">300</span><span class="token punctuation">,</span>  <span class="token property">"method"</span><span class="token operator">:</span> <span class="token string">"aes-256-cfb"</span><span class="token punctuation">,</span>  <span class="token property">"fast_open"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">}</span></code></pre><ol start="4"><li><p>在阿里云上配置实例安全组规则</p></li><li><p>启动服务</p></li></ol><pre><code>ssserver -c /etc/shadowsockts.json -d start</code></pre><ol start="6"><li>查看日志</li></ol><pre><code>tail -f -n 100 /vat/log/shadowsockts.log</code></pre><ol start="7"><li>本地终端使用小飞机客户端连接代理服务器，配置用户 pac 规则，开启 pac 代理模式即可。每次更新用户规则后需要禁启用连接后配置生效。<a href="https://adblockplus.org/en/filter-cheatsheet" target="_blank" rel="noopener">pac 规则配置语法说明</a></li></ol><h3 id="闲置服务器仅-1M-带宽，但是已经满足日常开发需求，访问-github-也流畅了很多，问题得到完美解决。"><a href="#闲置服务器仅-1M-带宽，但是已经满足日常开发需求，访问-github-也流畅了很多，问题得到完美解决。" class="headerlink" title="闲置服务器仅 1M 带宽，但是已经满足日常开发需求，访问 github 也流畅了很多，问题得到完美解决。"></a>闲置服务器仅 1M 带宽，但是已经满足日常开发需求，访问 github 也流畅了很多，问题得到完美解决。</h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> 服务器运维 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux,ss </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>js中一些常用函数的实现</title>
+      <link href="/2020/04/03/js%E4%B8%AD%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0/"/>
+      <url>/2020/04/03/js%E4%B8%AD%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0/</url>
+      
+        <content type="html"><![CDATA[<p><code>bind</code>、<code>call</code>、<code>apply</code>是js中常用的改变函数调用时this指向的方法，他们的主要区别在于传参<br>除了第一个对象参数外，<code>call</code>可以接收一个参数列表，<code>apply</code>接收一个数组，<code>bind</code>返回的是一个函数，不会立即执行，可用于实现柯里化。</p><h3 id="实现一个bind函数"><a href="#实现一个bind函数" class="headerlink" title="实现一个bind函数"></a>实现一个bind函数</h3><pre class=" language-js"><code class="language-js">Function<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>myBind <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>ctx<span class="token punctuation">)</span><span class="token punctuation">{</span>  <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> <span class="token keyword">this</span> <span class="token operator">!==</span> <span class="token string">'function'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token string">'Error'</span><span class="token punctuation">)</span>  <span class="token punctuation">}</span> <span class="token comment" spellcheck="true">// 非函数调用报错</span>  <span class="token keyword">let</span> self <span class="token operator">=</span> <span class="token keyword">this</span>  <span class="token keyword">const</span> args <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>arguments<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>  <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    self<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>ctx<span class="token punctuation">,</span>args<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">...</span>arguments<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre><h3 id="实现一个call函数"><a href="#实现一个call函数" class="headerlink" title="实现一个call函数"></a>实现一个call函数</h3><pre class=" language-js"><code class="language-js">Function<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>myCall <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>ctx<span class="token punctuation">)</span><span class="token punctuation">{</span>  <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> <span class="token keyword">this</span> <span class="token operator">!==</span> <span class="token string">'function'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token string">'Error'</span><span class="token punctuation">)</span>  <span class="token punctuation">}</span> <span class="token comment" spellcheck="true">// 非函数调用报错</span>  ctx <span class="token operator">=</span> ctx <span class="token operator">||</span> Window  ctx<span class="token punctuation">.</span>fn <span class="token operator">=</span> <span class="token keyword">this</span>  <span class="token keyword">const</span> args <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>arguments<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>  <span class="token keyword">const</span> res <span class="token operator">=</span> ctx<span class="token punctuation">.</span><span class="token function">fn</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span>  <span class="token keyword">delete</span> ctx<span class="token punctuation">.</span>fn  <span class="token keyword">return</span> res<span class="token punctuation">}</span></code></pre><h3 id="实现一个bind函数-1"><a href="#实现一个bind函数-1" class="headerlink" title="实现一个bind函数"></a>实现一个bind函数</h3><pre class=" language-js"><code class="language-js">Function<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>myBind <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>ctx<span class="token punctuation">)</span><span class="token punctuation">{</span>  <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> <span class="token keyword">this</span> <span class="token operator">!==</span> <span class="token string">'function'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token string">'Error'</span><span class="token punctuation">)</span>  <span class="token punctuation">}</span> <span class="token comment" spellcheck="true">// 非函数调用报错</span>  ctx <span class="token operator">=</span> ctx <span class="token operator">||</span> Window  ctx<span class="token punctuation">.</span>fn <span class="token operator">=</span> <span class="token keyword">this</span>  <span class="token keyword">let</span> res  <span class="token keyword">if</span><span class="token punctuation">(</span>arguments<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>    res <span class="token operator">=</span> ctx<span class="token punctuation">.</span><span class="token function">fn</span><span class="token punctuation">(</span><span class="token operator">...</span>arguments<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>    res <span class="token operator">=</span> ctx<span class="token punctuation">.</span><span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token punctuation">}</span>  <span class="token keyword">delete</span> ctx<span class="token punctuation">.</span>fn  <span class="token keyword">return</span> res <span class="token punctuation">}</span></code></pre>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>kafka学习笔记</title>
+      <link href="/2020/01/13/kafka%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <url>/2020/01/13/kafka%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>kafka是一个分布式流处理平台, 主要应用于流处理或消息队列. kafka作为一个集群运行在多台服务器上, 通过topic对存储的流数据进行分类, 每条记录中包含一个key、value和一个timestamp. </p></blockquote><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><h4 id="topics和日志"><a href="#topics和日志" class="headerlink" title="topics和日志"></a>topics和日志</h4><ol><li>多订阅者模式</li><li>partition分区, 每个分区都是有序且顺序不可变的记录集, 每个记录都会被分配一个id来表示顺序, 即常说的offset, 用来唯一标识分区中的每一条记录</li><li>保留所有发布记录, 无论是否被消费. 可配置参数设置数据保留时长. kafka性能不受数据大小影响.</li><li>offset是消费者中唯一保存的元数据, 可随时反复读取kafka中的数据.</li></ol><h3 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h3><ol><li>partiton分布在kafka集群服务器, 每个服务器共享这些分区, 每个分区在已配置的服务器上都有备份.</li><li>leader选举机制, 每个服务器都会成为某些分区的leader或某些分区的follower.</li></ol><h3 id="生产者"><a href="#生产者" class="headerlink" title="生产者"></a>生产者</h3><p>将数据发布到指定topic并负责将记录分配到指定partition</p><h3 id="消费者"><a href="#消费者" class="headerlink" title="消费者"></a>消费者</h3><ol><li>订阅指定topic后消费消息, 使用<strong>消费组</strong>名称标识</li><li>同组消费实例, 消息记录会负载平衡到每一个消费者实例, 即只有一个消费者实例会用来消费记录</li><li>每条消息都会广播到所有的消费组</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 后端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> middleware </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Linux常用指令</title>
+      <link href="/2020/01/09/Linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
+      <url>/2020/01/09/Linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</url>
+      
+        <content type="html"><![CDATA[<p>在工作中偶尔会用到linux指令, 下面记录一些常见命令方便回顾与查阅</p><h2 id="进程相关"><a href="#进程相关" class="headerlink" title="进程相关"></a>进程相关</h2><h3 id="查找进程"><a href="#查找进程" class="headerlink" title="查找进程"></a>查找进程</h3><p><code>ps aux | grep xxx</code></p><p>该命令通过管道符查找目标进程, 注意grep本身也是一个进程, 将会被列出, 可添加<code>|grep -v grep</code>去除.</p><p>ps命令查找与进程相关的pid号, 各常用选项:</p><table><thead><tr><th>选项</th><th>含义</th></tr></thead><tbody><tr><td>a</td><td>显示包括其他用户的所有程序</td></tr><tr><td>u</td><td>以用户为主的格式显示</td></tr><tr><td>x</td><td>显示所有程序, 不区分终端</td></tr><tr><td>e</td><td>显示每个程序所使用的环境变量</td></tr></tbody></table><h3 id="关闭进程"><a href="#关闭进程" class="headerlink" title="关闭进程"></a>关闭进程</h3><p><code>kill xxx</code> 常用 <code>kill -9 xxx</code></p><p>9为信息编号, 表示<code>SIGKILL</code>, 无条件终止. 可用<code>kill -l</code>显示所有信号, xxx为进程的pid.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 服务器运维 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
